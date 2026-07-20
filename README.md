@@ -19,7 +19,7 @@ Chubby is a Paper plugin for selecting and force-loading Minecraft chunks throug
 
 ## Installation
 
-1. Download or build `Chubby.jar`.
+1. Download or build `Chubby-1.0.0.jar`.
 2. Place it in the server `plugins` directory.
 3. Start the server once to create `plugins/Chubby/config.yml` and the language files.
 4. Review the configuration, then run `/chubby reload` after edits.
@@ -47,7 +47,7 @@ mvn clean package
 | `/chubby diagnostics` | Show administrator diagnostics. |
 | `/chubby map` | Open the administrator map. |
 | `/chubby remove <world> <x> <z>` | Remove a selected chunk as an administrator. |
-| `/chubby reload` | Reload configuration and languages as an administrator. |
+| `/chubby reload` | Reload configuration, language, and `chunks.yml` data as an administrator. |
 
 ## Permissions
 
@@ -62,11 +62,11 @@ mvn clean package
 
 ## Configuration
 
-`config.yml` controls ownership limits, GUI paging, visualizer timing, group-name limits, load estimation, warning thresholds, and TPS protection. Chubby stores selected chunks in `chunks.yml`; do not edit it while the server is running.
+`config.yml` controls ownership limits, GUI paging, visualizer timing, group-name limits, load estimation, warning thresholds, and TPS protection. Chubby stores selected chunks in `chunks.yml`; do not edit it while the server is running. Replacing this file while the plugin is stopped and then starting the server (or running `/chubby reload`) restores that file's chunk data.
 
 ## Localization
 
-All player-visible messages and GUI labels are resolved through `plugins/Chubby/lang/<language>.yml`. Set `language` in `config.yml` and use `/chubby reload`. Custom language files can omit keys: Chubby safely fills missing entries from English after reload.
+All player-visible messages and GUI labels are resolved through `plugins/Chubby/lang/<language>.yml`. Built-in locales are English (`en`) and Hungarian (`hu_HU`; `hu` is accepted as an alias). Set `language` in `config.yml` and use `/chubby reload`. Custom language files can omit keys: Chubby safely fills missing entries from English after reload.
 
 ## GUI overview
 

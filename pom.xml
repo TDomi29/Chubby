@@ -31,7 +31,7 @@
     </dependencies>
 
     <build>
-        <finalName>Chubby</finalName>
+        <finalName>Chubby-1.0.0</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
