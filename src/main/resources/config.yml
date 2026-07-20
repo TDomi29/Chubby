@@ -11,8 +11,8 @@
 config-version: 2
 
 # Active language file inside plugins/Chubby/lang/ without the .yml extension.
-# Built-in languages: en, hu. You can add your own file, for example de.yml,
-# then set this value to de and run /chubby reload.
+# Built-in languages: en, hu_HU (the short alias hu also works). You can add your own file,
+# for example de.yml, then set this value to de and run /chubby reload.
 language: en
 
 # ───────────────────────── PLAYER LIMITS ──────────────────────────

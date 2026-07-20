@@ -29,6 +29,7 @@ public final class ChubbyPlugin extends JavaPlugin implements CommandExecutor, T
         getConfig().options().copyDefaults(true);
         saveConfig();
         saveResource("lang/en.yml", false);
+        saveResource("lang/hu_HU.yml", false);
         lang.load();
         store.load();
         menu = new ChunkMenu(this);
@@ -255,7 +256,21 @@ public final class ChubbyPlugin extends JavaPlugin implements CommandExecutor, T
             case "priority" -> priorityCommand(player, args);
             case "list" -> lang.send(player, "messages.list", Map.of("count", String.valueOf(store.count(player.getUniqueId())), "chunks", String.join(", ", store.ownedBy(player.getUniqueId()).stream().map(this::format).toList())));
             case "remove" -> removeCommand(player, args);
-            case "reload" -> { if (!player.hasPermission("chubby.admin")) noPermission(player); else { reloadConfig(); lang.load(); startPerformanceProtection(); startWarningMonitor(); updatePerformanceState(); lang.send(player, "messages.config-reloaded"); } }
+            case "reload" -> {
+                if (!player.hasPermission("chubby.admin")) {
+                    noPermission(player);
+                } else {
+                    releaseChunkTickets();
+                    reloadConfig();
+                    lang.load();
+                    store.load();
+                    startPerformanceProtection();
+                    startWarningMonitor();
+                    updatePerformanceState();
+                    restoreChunkTickets();
+                    lang.send(player, "messages.config-reloaded");
+                }
+            }
             default -> menu.help(player);
         }
         return true;

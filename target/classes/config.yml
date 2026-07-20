@@ -3,7 +3,7 @@
 # │                     Paper 26.2 configuration file                       │
 # └─────────────────────────────────────────────────────────────────────────┘
 #
-# Reload changes with /cl reload.
+# Reload changes with /chubby reload.
 # YAML indentation is significant: use spaces only, never tabs.
 # Create a backup before editing this file.
 
@@ -11,8 +11,8 @@
 config-version: 2
 
 # Active language file inside plugins/Chubby/lang/ without the .yml extension.
-# Built-in languages: en, hu. You can add your own file, for example de.yml,
-# then set this value to de and run /cl reload.
+# Built-in languages: en, hu_HU (the short alias hu also works). You can add your own file,
+# for example de.yml, then set this value to de and run /chubby reload.
 language: en
 
 # ───────────────────────── PLAYER LIMITS ──────────────────────────
@@ -35,7 +35,7 @@ gui:
   max-groups-per-menu: 12
 
 # ─────────────────────── CHUNK HOLOGRAM ───────────────────────────
-# Settings used by /cl show and the visualizer button in the menu.
+# Settings used by /chubby show and the visualizer button in the menu.
 visualization-seconds: 12
 visualization:
   # Height of the four vertical light markers, in blocks. Minimum: 2.

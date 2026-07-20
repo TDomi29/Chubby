@@ -18,48 +18,75 @@ public final class ChunkStore {
     private final File file;
     private final Map<ChunkKey, ChunkSettings> chunks = new HashMap<>();
     private final Set<String> pausedGroups = new HashSet<>();
+    private final Map<ChunkKey, String> persistedKeys = new HashMap<>();
+    private YamlConfiguration yaml;
 
     public ChunkStore(File dataFolder) { this.file = new File(dataFolder, "chunks.yml"); }
 
     public void load() {
         chunks.clear();
         pausedGroups.clear();
-        YamlConfiguration yaml = YamlConfiguration.loadConfiguration(file);
+        persistedKeys.clear();
+        yaml = YamlConfiguration.loadConfiguration(file);
+        boolean migrated = false;
         ConfigurationSection section = yaml.getConfigurationSection("chunks");
-        if (section == null) return;
-        for (String key : section.getKeys(false)) {
-            try {
-                ChunkKey chunkKey = ChunkKey.parse(key);
-                Object raw = section.get(key);
-                // Preserve compatibility with the simple UUID format used by earlier Chubby versions.
-                if (raw instanceof String owner) chunks.put(chunkKey, new ChunkSettings(UUID.fromString(owner), "", 1));
-                else if (raw instanceof ConfigurationSection details) {
-                    chunks.put(chunkKey, new ChunkSettings(UUID.fromString(Objects.requireNonNull(details.getString("owner"))),
-                            details.getString("group", ""), details.getInt("priority", 1)));
+        if (section != null) {
+            for (String key : section.getKeys(false)) {
+                try {
+                    ChunkKey chunkKey = ChunkKey.parse(key);
+                    Object raw = section.get(key);
+                    // Earlier versions stored a chunk directly as its owner's UUID.
+                    if (raw instanceof String owner) {
+                        chunks.put(chunkKey, new ChunkSettings(UUID.fromString(owner), "", 1));
+                        persistedKeys.put(chunkKey, key);
+                        migrated = true;
+                    } else if (raw instanceof ConfigurationSection details) {
+                        String owner = details.getString("owner");
+                        if (owner == null || owner.isBlank()) continue;
+                        chunks.put(chunkKey, new ChunkSettings(UUID.fromString(owner), details.getString("group", ""), details.getInt("priority", 1)));
+                        persistedKeys.put(chunkKey, key);
+                        migrated |= !details.contains("group") || !details.contains("priority");
+                    }
+                } catch (IllegalArgumentException ignored) {
+                    // Leave malformed or future-version entries untouched in the source file.
                 }
-            } catch (IllegalArgumentException | NullPointerException ignored) { }
+            }
         }
         ConfigurationSection pausedSection = yaml.getConfigurationSection("paused-groups");
         if (pausedSection != null) for (String owner : pausedSection.getKeys(false)) {
             for (String group : pausedSection.getStringList(owner)) pausedGroups.add(owner + "\u0000" + group);
         }
+        if (migrated || !yaml.contains("data-version")) save();
     }
 
     public void save() {
-        YamlConfiguration yaml = new YamlConfiguration();
+        if (yaml == null) yaml = YamlConfiguration.loadConfiguration(file);
+        ConfigurationSection chunkSection = yaml.getConfigurationSection("chunks");
+        if (chunkSection == null) chunkSection = yaml.createSection("chunks");
+        for (Map.Entry<ChunkKey, String> entry : new HashMap<>(persistedKeys).entrySet()) {
+            if (!chunks.containsKey(entry.getKey())) chunkSection.set(entry.getValue(), null);
+        }
         for (Map.Entry<ChunkKey, ChunkSettings> entry : chunks.entrySet()) {
-            String path = "chunks." + entry.getKey().configKey();
+            String key = persistedKeys.getOrDefault(entry.getKey(), entry.getKey().configKey());
+            // Rebuild only entries managed by this plugin; unrelated YAML data remains intact.
+            chunkSection.set(key, null);
+            ConfigurationSection details = chunkSection.createSection(key);
             ChunkSettings settings = entry.getValue();
-            yaml.set(path + ".owner", settings.owner().toString());
-            yaml.set(path + ".group", settings.group());
-            yaml.set(path + ".priority", settings.priority());
+            details.set("owner", settings.owner().toString());
+            details.set("group", settings.group());
+            details.set("priority", settings.priority());
+            persistedKeys.put(entry.getKey(), key);
         }
         Map<String, List<String>> pausedByOwner = new HashMap<>();
         for (String value : pausedGroups) {
             int separator = value.indexOf('\u0000');
             pausedByOwner.computeIfAbsent(value.substring(0, separator), ignored -> new ArrayList<>()).add(value.substring(separator + 1));
         }
+        yaml.set("paused-groups", null);
         pausedByOwner.forEach((owner, groups) -> yaml.set("paused-groups." + owner, groups));
+        yaml.set("data-version", 2);
+        File parent = file.getParentFile();
+        if (!parent.exists() && !parent.mkdirs()) throw new IllegalStateException("Could not create Chubby data folder");
         try { yaml.save(file); } catch (IOException exception) { throw new IllegalStateException("Could not save chunks.yml", exception); }
     }
 

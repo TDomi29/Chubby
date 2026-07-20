@@ -1,0 +1,185 @@
+lang-version: 3
+prefix: '&8[&6Chubby&8] '
+priorities: {low: '&8Alacsony', normal: '&fNormál', high: '&6Magas'}
+grades: {unavailable: '&8Világ nem elérhető', normal: '&aNormál', high: '&eMagas', critical: '&cKritikus'}
+console:
+  warning: '&c[Chubby] Terhelési figyelmeztetés: &f{chunk} &c(pontszám: {score}, entitások: {entities}, tölcsérek: {hoppers})'
+  protection-restored: '&a[Chubby] A teljesítményvédelem minden chunk-jegyét visszaállította (TPS: {tps}).'
+  protection-suspended: '&e[Chubby] A teljesítményvédelem szüneteltette a(z) {priority} és alacsonyabb jegyeket (TPS: {tps}).'
+  banner-selected: '  Kijelölt chunkok: {count}'
+  banner-active: '  Aktív kényszerbetöltési jegyek: {count}'
+  banner-owners: '  Tulajdonosok: {owners} | Chunk-csoportok: {groups}'
+  banner-protection: '  Teljesítményvédelem: {state} | TPS: {tps}'
+  state-paused: 'SZÜNETEL'
+  state-active: 'AKTÍV'
+  enabled: '&aA Chubby engedélyezve; {count} chunk visszaállítva.'
+messages:
+  no-permission: '&cNincs jogosultságod ehhez.'
+  player-only: '&cEzt a parancsot csak játékos használhatja.'
+  chunk-enabled: '&aA chunk most kényszerbetöltött: &f{chunk}'
+  chunk-disabled: '&aA chunk kényszerbetöltése leállt: &f{chunk}'
+  limit-reached: '&cElérted a chunkkorlátodat ({limit}).'
+  chunk-waiting: '&eA chunk mentve, de a teljesítményvédelem szünetelteti: &f{chunk}'
+  visualization: '&bA chunk hologramja {seconds} másodpercig látható.'
+  config-reloaded: '&aA Chubby konfigurációja, nyelve és chunkadatai újratöltve.'
+  search-hint: '&eKeresés: &f/chubby search <világ, X vagy Z> &7| törlés: &f/chubby search clear'
+  actionbar-active: '&aKényszerbetöltés aktív &f| &7{world} &fchunk {x}, {z}'
+  actionbar-inactive: '&bChunk nincs kijelölve &f| &7{world} &fchunk {x}, {z}'
+  list: '&eChunkjaid (&f{count}&e): &f{chunks}'
+  usage-group: '&eHasználat: /chubby group <név> <priority|pause|resume> [low|normal|high]'
+  usage-priority: '&eHasználat: /chubby priority <low|normal|high>'
+  usage-remove: '&eHasználat: /chubby remove <világ> <chunkX> <chunkZ>'
+  group-empty: '&cNincs chunkod ebben a csoportban.'
+  group-paused: '&eA csoport kényszerbetöltési jegyei szünetelnek.'
+  group-resumed: '&aA csoport kényszerbetöltési jegyei újra aktívak.'
+  group-priority: '&aCsoport prioritása beállítva: {priority}'
+  invalid-priority: '&cHasználd ezek egyikét: low, normal, high.'
+  priority-set: '&aPrioritás beállítva: {priority}'
+  chunk-not-selected: '&cElőbb jelöld ki a jelenlegi chunkot.'
+  chunk-linked: '&aChunk hozzárendelve ehhez: &f{group}'
+  chunk-unlinked: '&eChunk leválasztva a csoportjáról.'
+  group-too-long: '&cA csoportnév legfeljebb {limit} karakter lehet.'
+  chunk-removed: '&aChunk eltávolítva: &f{chunk}'
+  invalid-coordinates: '&cA chunkkoordinátáknak egész számoknak kell lenniük.'
+help:
+  lines: ['&8&m------------------------------------', '&6&lCHUBBY &7Súgó', '&e/chubby &8| &7Parancsközpont megnyitása', '&e/chubby toggle &8| &7Jelenlegi chunk kapcsolása', '&e/chubby show &8| &7Chunk-hologram mutatása', '&e/chubby search <szöveg> &8| &7Chunkok szűrése', '&e/chubby groups &8| &7Csoportok megnyitása', '&8&m------------------------------------']
+diagnostics:
+  line: '&8&m------------------------------------'
+  title: '&6&lCHUBBY &7Diagnosztika'
+  status: '&7TPS: {tps_color}{tps} &8| &7Védelem: {protection}'
+  counts: '&7Kijelölt: &f{selected} &8| &7Kényszerbetöltött: &f{active} &8| &7Szünetel: &f{paused}'
+  no-chunks: '&8Nincs betöltött, elemezhető chunk.'
+  chunk: '&e- &f{chunk} &8- &7pontszám: {grade} &f{score}'
+  protection-active: '&eaktív'
+  protection-normal: '&aminden jegy aktív'
+gui:
+  common: {close: '&cBezárás', close-lore: ['&8Menü bezárása.'], back: '&eVissza', filler: '&0', none: '&8Nincs', active: '&aAktív', paused: '&cSzünetel', protected: '&eVédelem aktív', healthy: '&aRendszer rendben', yes: '&aIgen', no: '&cNem'}
+  dashboard:
+    title: '&0Chubby parancsközpont'
+    header: '&8Chubby parancsközpont'
+    status: '&6Rendszerállapot'
+    status-lore: ['&7Saját: &f{owned}&7/&f{limit}', '&7Kijelölt: &f{selected}', '&7TPS: &f{tps}', '{protection}']
+    enable: '&aJelenlegi chunk engedélyezése'
+    disable: '&cJelenlegi chunk letiltása'
+    current-lore: ['&7{chunk}', '&eKattints a kényszerbetöltés kapcsolásához.']
+    manage: '&dJelenlegi chunk kezelése'
+    manage-lore: ['&7Prioritás, csoport és részletes állapot.', '&eKattints a megnyitáshoz.']
+    visualize: '&bChunkhatár mutatása'
+    visualize-lore: ['&7A jelenlegi 16x16-os chunkhatár megjelenítése.', '&7A részecskéket csak te látod.']
+    chunks: '&eSaját chunkok'
+    chunks-lore: ['&f{count} &7kijelölt chunk.', '&eKattints a listához.']
+    groups: '&dChunk-csoportok'
+    groups-lore: ['&f{count} &7csoport.', '&eKattints a kezeléshez.']
+    search: '&eKeresés'
+    search-lore: ['&7Szűrés világ vagy koordináták alapján.', '&f/chubby search <szöveg>']
+    help: '&bSúgó és parancsok'
+    help-lore: ['&7Játékos- és adminfunkciók.', '&eKattints a súgóhoz.']
+    map: '&dAdminisztrátori térkép'
+    map-lore: ['&7Közeli kijelölt chunkok térképe.', '&eKattints a megnyitáshoz.']
+    diagnostics: '&cDiagnosztika'
+    diagnostics-lore: ['&7TPS, jegyek, szünetelő chunkok és terhelésbecslések.']
+  browser:
+    title: '&0Chubby - Saját chunkok'
+    header: '&8Saját chunkok &7{page}/{pages}'
+    search-lore: ['&7Chunkok szűrése a /chubby search paranccsal.', '&7Jelenlegi szűrő: {filter}']
+    chunk: '&f{chunk}'
+    chunk-lore: ['&7Csoport: {group}', '&7Prioritás: {priority}', '&7Állapot: {state}', '&eKattints a részletekhez.']
+    previous: '&eElőző oldal'
+    next: '&eKövetkező oldal'
+    first-page: ['&8Nincs előző oldal.']
+    last-page: ['&8Nincs következő oldal.']
+    previous-lore: ['&aKattints a visszalépéshez.']
+    next-lore: ['&aKattints a folytatáshoz.']
+  groups:
+    title: '&0Chubby - Chunk-csoportok'
+    header: '&8Chunk-csoportok'
+    summary: '&dSaját chunk-csoportok'
+    summary-lore: ['&7Kattints egy csoportra a kezeléshez.', '&7Csoportot a jelenlegi chunk kezelőmenüjében hozhatsz létre.']
+    entry: '&d{group}'
+    entry-lore: ['&7Chunkok: &f{count}', '&7Állapot: {state}', '&eKattints a kezeléshez.']
+    empty: '&7Még nincsenek csoportok'
+    empty-lore: ['&7Jelölj ki egy chunkot, majd hozz létre csoportot', '&7a kezelőmenüjében.']
+  diagnostics:
+    title: '&0Chubby - Diagnosztika'
+    header: '&8Diagnosztika'
+    status: '&cÉlő rendszerállapot'
+    status-lore: ['&7TPS: &f{tps}', '&7Kijelölt: &f{selected}', '&7Aktív: &a{active}', '&7Szünetel: &c{paused}']
+    chunk: '&e{chunk}'
+    chunk-lore: ['&7Terhelés: {grade} &f{score}', '&7Entitások: &f{entities} &8| &7Tölcsérek: &f{hoppers}', '&eKattints a részletekhez.']
+  help:
+    title: '&0Chubby - Súgó'
+    header: '&8Útmutató'
+    player: '&aJátékosfunkciók'
+    player-lore: ['&f/chubby &8- &7parancsközpont', '&f/chubby toggle &8- &7jelenlegi chunk', '&f/chubby show &8- &7chunkhatár', '&f/chubby search <szöveg> &8- &7keresés']
+    groups: '&dCsoportok és prioritás'
+    groups-lore: ['&f/chubby link <név>', '&f/chubby unlink', '&f/chubby priority <low|normal|high>', '&f/chubby group <név> <priority|pause|resume>']
+    admin: '&cAdminisztrátori funkciók'
+    admin-lore: ['&f/chubby map', '&f/chubby diagnostics', '&f/chubby remove <világ> <x> <z>', '&f/chubby reload']
+    admin-denied: ['&8Adminisztrátori jogosultság szükséges.']
+  confirm:
+    title: '&0Chubby - Művelet megerősítése'
+    header: '&8Eltávolítás megerősítése'
+    yes: '&aIgen, távolítsd el'
+    yes-lore: ['&7Kényszerbetöltés leállítása és a chunk eltávolítása.']
+    chunk: '&e{chunk}'
+    chunk-lore: ['&cEz a művelet nem vonható vissza.']
+    no: '&cMégse'
+    no-lore: ['&7Visszatérés a chunkinformációhoz.']
+  manage:
+    title: '&0Chubby - Chunk kezelése'
+    header: '&8Prioritás és csoport kezelése'
+    unselected: '&cEz a chunk nincs kijelölve'
+    unselected-lore: ['&7Előbb jelöld ki a főmenüben.']
+    chunk: '&6{chunk}'
+    chunk-lore: ['&7Csoport: {group}', '&7Prioritás: {priority}']
+    priority-0: '&8Alacsony prioritás'
+    priority-0-lore: ['&7TPS-eséskor ez szünetel először.']
+    priority-1: '&fNormál prioritás'
+    priority-1-lore: ['&7Kiegyensúlyozott alapértelmezett mód.']
+    priority-2: '&6Magas prioritás'
+    priority-2-lore: ['&7Csak súlyos TPS-veszteségnél szünetel.']
+    unlink: '&cLeválasztás csoportról'
+    unlink-lore: ['&eKattints a chunk leválasztásához.']
+    no-group: ['&8Ennek a chunknak nincs csoportja.']
+    actions: '&dCsoportműveletek'
+    actions-lore: ['&7Csoportprioritás beállítása vagy szüneteltetése.']
+    new-group: '&eÚj chunk-csoport'
+    new-group-lore: ['&7Használd: &f/chubby link <név>']
+    group: '&d{group}'
+    group-lore: ['&7Kattints a chunk hozzárendeléséhez.']
+  group:
+    title: '&0Chubby - Csoportműveletek'
+    header: '&8Csoportkezelés'
+    name: '&d{group}'
+    name-lore: ['&7Kapcsolt chunkok: &f{count}', '&7Állapot: {state}']
+    priority-0: '&8Mindenki alacsony'
+    priority-1: '&fMindenki normál'
+    priority-2: '&6Mindenki magas'
+    priority-lore: ['&7Prioritás beállítása minden csoportchunkhoz.']
+    pause: '&cCsoport szüneteltetése'
+    resume: '&aCsoport folytatása'
+    pause-lore: ['&7A kényszerbetöltési jegyek azonnal frissülnek.']
+  info:
+    title: '&0Chubby - Chunkinformáció'
+    header: '&8Részletes chunkinformáció'
+    chunk: '&6{chunk}'
+    chunk-lore: ['&7Tulajdonos: &f{owner}', '&7Világ elérhető: {available}', '&7Csoport: {group}', '&7Prioritás: {priority}', '&7Állapot: {state}']
+    technical: '&eTechnikai adatok'
+    technical-lore: ['&7Chunk X: &f{x}', '&7Chunk Z: &f{z}', '&7Blokktartomány: &f{minx}..{maxx}, {minz}..{maxz}']
+    estimate: '&eTerhelésbecslés'
+    estimate-lore: ['&7Állapot: {grade}', '&7Pontszám: &f{score}', '&7Entitások: &f{entities}', '&7Tölcsérek: &f{hoppers}', '&7Blokkentitások: &f{tiles}']
+    remove: '&cChunk eltávolítása'
+    remove-lore: ['&7A kényszerbetöltés azonnal leáll.', '&cEz a művelet nem vonható vissza.']
+  map:
+    title: '&0Chubby - Adminisztrátori térkép'
+    header: '&8Területáttekintés'
+    center: '&d{world} &8| &f{x}, {z}'
+    center-lore: ['&aZöld: saját chunkod', '&cPiros: más játékosé', '&7Szürke: nincs kijelölve', '&7Nézet: &f7 x 5 chunk', '&eKattints egy kijelölt chunkra a részletekhez.']
+    chunk: '&f({x}, {z})'
+    claimed: ['&eKijelölt chunk']
+    empty: ['&8Nincs kijelölve']
+    north: '&eÉszak'
+    west: '&eNyugat'
+    east: '&eKelet'
+    south: '&eDél'
+    move-lore: ['&7Térképnézet mozgatása.']

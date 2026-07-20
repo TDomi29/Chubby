@@ -20,8 +20,10 @@ public final class Lang {
 
     public void load() {
         englishDefaults = bundled("en");
-        activeLanguage = Optional.ofNullable(plugin.getConfig().getString("language", "en"))
-                .orElse("en").trim().toLowerCase(Locale.ROOT);
+        String configuredLanguage = Optional.ofNullable(plugin.getConfig().getString("language", "en"))
+                .orElse("en").trim();
+        activeLanguage = configuredLanguage.equalsIgnoreCase("hu") || configuredLanguage.equalsIgnoreCase("hu_HU")
+                ? "hu_HU" : configuredLanguage.toLowerCase(Locale.ROOT);
         File directory = new File(plugin.getDataFolder(), "lang");
         if (!directory.exists() && !directory.mkdirs()) plugin.getLogger().warning("Could not create the lang folder.");
         File file = new File(directory, activeLanguage + ".yml");
@@ -32,7 +34,7 @@ public final class Lang {
         }
         messages = YamlConfiguration.loadConfiguration(file);
         YamlConfiguration defaults = bundled(activeLanguage);
-        if ((activeLanguage.equals("en") || activeLanguage.equals("hu"))
+        if ((activeLanguage.equals("en") || activeLanguage.equals("hu_HU"))
                 && messages.getInt("lang-version", 0) < defaults.getInt("lang-version", 1)) {
             File backup = new File(directory, activeLanguage + ".legacy-" + System.currentTimeMillis() + ".yml");
             if (file.renameTo(backup)) {
