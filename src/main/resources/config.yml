@@ -1,0 +1,88 @@
+# ┌─────────────────────────────────────────────────────────────────────────┐
+# │                         Chubby Chunk Loader                              │
+# │                     Paper 26.2 configuration file                       │
+# └─────────────────────────────────────────────────────────────────────────┘
+#
+# Reload changes with /chubby reload.
+# YAML indentation is significant: use spaces only, never tabs.
+# Create a backup before editing this file.
+
+# Internal file version. Do not change this value manually.
+config-version: 2
+
+# Active language file inside plugins/Chubby/lang/ without the .yml extension.
+# Built-in languages: en, hu. You can add your own file, for example de.yml,
+# then set this value to de and run /chubby reload.
+language: en
+
+# ───────────────────────── PLAYER LIMITS ──────────────────────────
+# Maximum number of force-loaded chunks a player may own.
+# Players with chubby.bypass.limit ignore this limit.
+max-chunks-per-player: 10
+
+# ───────────────────────── CHUNK GROUPS ───────────────────────────
+groups:
+  # Maximum group name length. Valid range: 3 to 48.
+  max-name-length: 24
+
+# ───────────────────────── PREMIUM GUI ────────────────────────────
+gui:
+  # Number of owned chunks shown on one browser page. Valid range: 1 to 36.
+  items-per-page: 28
+
+  # Maximum existing groups shown in the current-chunk management menu.
+  # Valid range: 1 to 12.
+  max-groups-per-menu: 12
+
+# ─────────────────────── CHUNK HOLOGRAM ───────────────────────────
+# Settings used by /chubby show and the visualizer button in the menu.
+visualization-seconds: 12
+visualization:
+  # Height of the four vertical light markers, in blocks. Minimum: 2.
+  vertical-height: 6
+
+  # Distance between particles along the 16×16 chunk border.
+  # A lower number is prettier but creates more particles. Recommended: 1 or 2.
+  particle-spacing: 2
+
+# ─────────────────── TPS PERFORMANCE PROTECTION ───────────────────
+# The protection system suspends force-loads by priority when TPS becomes low.
+# Suspension order: low → normal → high. Tickets automatically return when TPS recovers.
+performance-protection:
+  enabled: true
+
+  # TPS measurement interval in seconds. Minimum: 5.
+  check-interval-seconds: 20
+
+  # These are "TPS below" thresholds, so keep them in descending order.
+  suspend-low-priority-below-tps: 18.0
+  suspend-normal-priority-below-tps: 17.0
+  suspend-high-priority-below-tps: 15.0
+
+# ──────────────── LOAD ESTIMATION AND WARNINGS ─────────────────────
+# The load score is calculated as:
+# (entities × entity-weight) + (hoppers × hopper-weight)
+# + (all tile entities × tile-entity-weight).
+load-estimation:
+  entity-weight: 1
+  hopper-weight: 4
+  tile-entity-weight: 1
+
+load-warnings:
+  # Enable scheduled checks for selected and currently loaded chunks.
+  enabled: true
+
+  # Minutes between checks. Minimum: 1.
+  check-interval-minutes: 5
+
+  # A warning is generated when the score reaches this value.
+  score-threshold: 40
+
+  # Send the warning to the chunk owner in chat. Disabled by default.
+  notify-owner-in-chat: false
+
+  # Chat warning cooldown per chunk, in minutes.
+  owner-chat-cooldown-minutes: 30
+
+  # Console warning cooldown per chunk, in minutes.
+  console-cooldown-minutes: 60

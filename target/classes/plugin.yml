@@ -1,0 +1,29 @@
+name: Chubby
+version: 1.0.0
+main: hu.chubby.chunkloader.ChubbyPlugin
+api-version: '26.2'
+authors: [Chubby]
+description: Jogosultság-alapú chunk loader menüvel és vizuális kijelöléssel.
+commands:
+  chubby:
+    description: Chunk loader kezelése
+    usage: /chubby <menu|toggle|show|help|diagnostics|search|map|link|unlink|groups|group|priority|list|remove|reload>
+permissions:
+  chubby.use:
+    description: Chunk loader alap parancsok használata.
+    default: true
+  chubby.menu:
+    description: A chunk loader GUI megnyitása.
+    default: true
+  chubby.manage:
+    description: Saját chunkok kijelölése és törlése.
+    default: true
+  chubby.visualize:
+    description: Chunk határának vizuális megjelenítése.
+    default: true
+  chubby.admin:
+    description: Minden chunk kezelése és konfiguráció újratöltése.
+    default: op
+  chubby.bypass.limit:
+    description: Kijelölési limit megkerülése.
+    default: op

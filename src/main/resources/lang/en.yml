@@ -1,0 +1,186 @@
+lang-version: 3
+prefix: '&8[&6Chubby&8] '
+priorities: {low: '&8Low', normal: '&fNormal', high: '&6High'}
+grades: {unavailable: '&8World unavailable', normal: '&aNormal', high: '&eHigh', critical: '&cCritical'}
+console:
+  warning: '&c[Chubby] Load warning: &f{chunk} &c(score: {score}, entities: {entities}, hoppers: {hoppers})'
+  protection-restored: '&a[Chubby] Performance protection restored all chunk tickets (TPS: {tps}).'
+  protection-suspended: '&e[Chubby] Performance protection suspended {priority} and lower tickets (TPS: {tps}).'
+  banner-selected: '  Selected chunks: {count}'
+  banner-active: '  Active force-load tickets: {count}'
+  banner-owners: '  Owners: {owners} | Chunk groups: {groups}'
+  banner-protection: '  Performance protection: {state} | TPS: {tps}'
+  state-paused: 'PAUSED'
+  state-active: 'ACTIVE'
+  enabled: '&aChubby enabled; restored {count} chunks.'
+messages:
+  no-permission: '&cYou do not have permission to do this.'
+  player-only: '&cThis command can only be used by a player.'
+  chunk-enabled: '&aChunk is now force-loaded: &f{chunk}'
+  chunk-disabled: '&aChunk force-load stopped: &f{chunk}'
+  limit-reached: '&cYou reached your chunk limit ({limit}).'
+  chunk-waiting: '&eChunk saved, but paused by performance protection: &f{chunk}'
+  visualization: '&bChunk hologram is visible for {seconds} seconds.'
+  config-reloaded: '&aChubby configuration and language reloaded.'
+  search-hint: '&eSearch: &f/chubby search <world, X, or Z> &7| clear: &f/chubby search clear'
+  actionbar-active: '&aForce-load active &f| &7{world} &fchunk {x}, {z}'
+  actionbar-inactive: '&bChunk not selected &f| &7{world} &fchunk {x}, {z}'
+  list: '&eYour chunks (&f{count}&e): &f{chunks}'
+  usage-group: '&eUsage: /chubby group <name> <priority|pause|resume> [low|normal|high]'
+  usage-priority: '&eUsage: /chubby priority <low|normal|high>'
+  usage-remove: '&eUsage: /chubby remove <world> <chunkX> <chunkZ>'
+  group-empty: '&cYou do not own any chunks in that group.'
+  group-paused: '&eThe group force-load tickets are paused.'
+  group-resumed: '&aThe group force-load tickets are active again.'
+  group-priority: '&aGroup priority set to: {priority}'
+  invalid-priority: '&cUse one of: low, normal, high.'
+  priority-set: '&aPriority set to: {priority}'
+  chunk-not-selected: '&cSelect the current chunk first.'
+  chunk-linked: '&aChunk linked to: &f{group}'
+  chunk-unlinked: '&eChunk unlinked from its group.'
+  group-too-long: '&cGroup names may contain at most {limit} characters.'
+  chunk-removed: '&aChunk removed: &f{chunk}'
+  invalid-coordinates: '&cChunk coordinates must be whole numbers.'
+  new-group-hint: '&eCreate a group with: &f/chubby link <name>'
+help:
+  lines: ['&8&m------------------------------------', '&6&lCHUBBY &7Help', '&e/chubby &8| &7Open the command center', '&e/chubby toggle &8| &7Toggle the current chunk', '&e/chubby show &8| &7Show the chunk hologram', '&e/chubby search <text> &8| &7Filter chunks', '&e/chubby groups &8| &7Open groups', '&8&m------------------------------------']
+diagnostics:
+  line: '&8&m------------------------------------'
+  title: '&6&lCHUBBY &7Diagnostics'
+  status: '&7TPS: {tps_color}{tps} &8| &7Protection: {protection}'
+  counts: '&7Selected: &f{selected} &8| &7Force-loaded: &f{active} &8| &7Paused: &f{paused}'
+  no-chunks: '&8No loaded chunks are available for analysis.'
+  chunk: '&e- &f{chunk} &8- &7score: {grade} &f{score}'
+  protection-active: '&eactive'
+  protection-normal: '&aall tickets active'
+gui:
+  common: {close: '&cClose', close-lore: ['&8Close this menu.'], back: '&eBack', filler: '&0', none: '&8None', active: '&aActive', paused: '&cPaused', protected: '&eProtection active', healthy: '&aSystem healthy', yes: '&aYes', no: '&cNo'}
+  dashboard:
+    title: '&0Chubby Command Center'
+    header: '&8Chubby Command Center'
+    status: '&6System status'
+    status-lore: ['&7Owned: &f{owned}&7/&f{limit}', '&7Selected: &f{selected}', '&7TPS: &f{tps}', '{protection}']
+    enable: '&aEnable current chunk'
+    disable: '&cDisable current chunk'
+    current-lore: ['&7{chunk}', '&eClick to toggle force-loading.']
+    manage: '&dManage current chunk'
+    manage-lore: ['&7Priority, group, and detailed status.', '&eClick to open.']
+    visualize: '&bShow chunk border'
+    visualize-lore: ['&7Display the current 16x16 chunk border.', '&7Only you can see the particles.']
+    chunks: '&eMy chunks'
+    chunks-lore: ['&f{count} &7selected chunks.', '&eClick to browse.']
+    groups: '&dChunk groups'
+    groups-lore: ['&f{count} &7groups.', '&eClick to manage.']
+    search: '&eSearch'
+    search-lore: ['&7Filter by world or coordinates.', '&f/chubby search <text>']
+    help: '&bHelp and commands'
+    help-lore: ['&7Player and administrator features.', '&eClick for help.']
+    map: '&dAdministrator map'
+    map-lore: ['&7Map selected nearby chunks.', '&eClick to open.']
+    diagnostics: '&cDiagnostics'
+    diagnostics-lore: ['&7TPS, tickets, paused chunks, and load estimates.']
+  browser:
+    title: '&0Chubby - My chunks'
+    header: '&8My chunks &7{page}/{pages}'
+    search-lore: ['&7Filter chunks with /chubby search.', '&7Current filter: {filter}']
+    chunk: '&f{chunk}'
+    chunk-lore: ['&7Group: {group}', '&7Priority: {priority}', '&7State: {state}', '&eClick for details.']
+    previous: '&ePrevious page'
+    next: '&eNext page'
+    first-page: ['&8There is no previous page.']
+    last-page: ['&8There is no next page.']
+    previous-lore: ['&aClick to go back.']
+    next-lore: ['&aClick to continue.']
+  groups:
+    title: '&0Chubby - Chunk groups'
+    header: '&8Chunk groups'
+    summary: '&dYour chunk groups'
+    summary-lore: ['&7Click a group for management.', '&7Create a group from the current chunk menu.']
+    entry: '&d{group}'
+    entry-lore: ['&7Chunks: &f{count}', '&7State: {state}', '&eClick to manage.']
+    empty: '&7No groups yet'
+    empty-lore: ['&7Select a chunk, then create a group', '&7from its management menu.']
+  diagnostics:
+    title: '&0Chubby - Diagnostics'
+    header: '&8Diagnostics'
+    status: '&cLive system status'
+    status-lore: ['&7TPS: &f{tps}', '&7Selected: &f{selected}', '&7Active: &a{active}', '&7Paused: &c{paused}']
+    chunk: '&e{chunk}'
+    chunk-lore: ['&7Load: {grade} &f{score}', '&7Entities: &f{entities} &8| &7Hoppers: &f{hoppers}', '&eClick for details.']
+  help:
+    title: '&0Chubby - Help'
+    header: '&8Guide'
+    player: '&aPlayer features'
+    player-lore: ['&f/chubby &8- &7command center', '&f/chubby toggle &8- &7current chunk', '&f/chubby show &8- &7chunk border', '&f/chubby search <text> &8- &7search']
+    groups: '&dGroups and priority'
+    groups-lore: ['&f/chubby link <name>', '&f/chubby unlink', '&f/chubby priority <low|normal|high>', '&f/chubby group <name> <priority|pause|resume>']
+    admin: '&cAdministrator features'
+    admin-lore: ['&f/chubby map', '&f/chubby diagnostics', '&f/chubby remove <world> <x> <z>', '&f/chubby reload']
+    admin-denied: ['&8Administrator permission required.']
+  confirm:
+    title: '&0Chubby - Confirm action'
+    header: '&8Confirm removal'
+    yes: '&aYes, remove it'
+    yes-lore: ['&7Stop force-loading and remove this chunk.']
+    chunk: '&e{chunk}'
+    chunk-lore: ['&cThis action cannot be undone.']
+    no: '&cCancel'
+    no-lore: ['&7Return to chunk information.']
+  manage:
+    title: '&0Chubby - Manage chunk'
+    header: '&8Priority and group management'
+    unselected: '&cThis chunk is not selected'
+    unselected-lore: ['&7Select it from the main menu first.']
+    chunk: '&6{chunk}'
+    chunk-lore: ['&7Group: {group}', '&7Priority: {priority}']
+    priority-0: '&8Low priority'
+    priority-0-lore: ['&7Paused first when TPS drops.']
+    priority-1: '&fNormal priority'
+    priority-1-lore: ['&7Balanced default mode.']
+    priority-2: '&6High priority'
+    priority-2-lore: ['&7Paused only under severe TPS loss.']
+    unlink: '&cUnlink from group'
+    unlink-lore: ['&eClick to unlink this chunk.']
+    no-group: ['&8This chunk has no group.']
+    actions: '&dGroup actions'
+    actions-lore: ['&7Set the group priority or pause it.']
+    new-group: '&eNew chunk group'
+    new-group-lore: ['&7Use: &f/chubby link <name>']
+    group: '&d{group}'
+    group-lore: ['&7Click to link this chunk.']
+  group:
+    title: '&0Chubby - Group actions'
+    header: '&8Group management'
+    name: '&d{group}'
+    name-lore: ['&7Linked chunks: &f{count}', '&7State: {state}']
+    priority-0: '&8Set all to low'
+    priority-1: '&fSet all to normal'
+    priority-2: '&6Set all to high'
+    priority-lore: ['&7Set the priority for every group chunk.']
+    pause: '&cPause group'
+    resume: '&aResume group'
+    pause-lore: ['&7Refresh force-load tickets immediately.']
+  info:
+    title: '&0Chubby - Chunk information'
+    header: '&8Detailed chunk information'
+    chunk: '&6{chunk}'
+    chunk-lore: ['&7Owner: &f{owner}', '&7World available: {available}', '&7Group: {group}', '&7Priority: {priority}', '&7State: {state}']
+    technical: '&eTechnical data'
+    technical-lore: ['&7Chunk X: &f{x}', '&7Chunk Z: &f{z}', '&7Block range: &f{minx}..{maxx}, {minz}..{maxz}']
+    estimate: '&eLoad estimate'
+    estimate-lore: ['&7State: {grade}', '&7Score: &f{score}', '&7Entities: &f{entities}', '&7Hoppers: &f{hoppers}', '&7Tile entities: &f{tiles}']
+    remove: '&cRemove chunk'
+    remove-lore: ['&7Stop force-loading immediately.', '&cThis action cannot be undone.']
+  map:
+    title: '&0Chubby - Administrator map'
+    header: '&8Area overview'
+    center: '&d{world} &8| &f{x}, {z}'
+    center-lore: ['&aGreen: your chunk', '&cRed: another player', '&7Gray: unselected', '&7View: &f7 x 5 chunks', '&eClick a selected chunk for details.']
+    chunk: '&f({x}, {z})'
+    claimed: ['&eSelected chunk']
+    empty: ['&8Unselected chunk']
+    north: '&eNorth'
+    west: '&eWest'
+    east: '&eEast'
+    south: '&eSouth'
+    move-lore: ['&7Move the map view.']

@@ -1,0 +1,72 @@
+lang-version: 2
+prefix: '&8[&6Chubby&8] '
+console:
+  warning: '&c[Chubby] Load warning: &f{chunk} &c(score: {score}, entity: {entities}, hopper: {hoppers})'
+messages:
+  no-permission: '&cYou do not have permission to do this.'
+  player-only: '&cThis command can only be used by a player.'
+  chunk-enabled: '&aChunk is now force-loaded: &f{chunk}'
+  chunk-disabled: '&aChunk force-load stopped: &f{chunk}'
+  limit-reached: '&cYou reached your chunk limit ({limit}).'
+  chunk-waiting: '&eChunk saved, but it is paused by performance protection: &f{chunk}'
+  visualization: '&bChunk hologram is visible for {seconds} seconds.'
+  config-reloaded: '&aChubby configuration and language reloaded.'
+  search-hint: '&eSearch: &f/cl search <world, X or Z> &7| clear: &f/cl search clear'
+help:
+  lines:
+    - '&8&m------------------------------------'
+    - '&6&lCHUBBY &f&lCHUNK LOADER &8- &7Help'
+    - '&e/chubby &8| &7Open the command center'
+    - '&e/chubby toggle &8| &7Toggle current chunk'
+    - '&e/chubby show &8| &7Show chunk hologram'
+    - '&e/chubby search <text> &8| &7Filter chunks'
+    - '&d&lGroups and priority'
+    - '&e/chubby link <name> &8| &7Link current chunk to a group'
+    - '&e/chubby unlink &8| &7Unlink current chunk'
+    - '&e/chubby groups &8| &7Open groups'
+    - '&e/chubby priority <low|normal|high> &8| &7Set priority'
+    - '&8&m------------------------------------'
+diagnostics:
+  line: '&8&m------------------------------------'
+  title: '&6&lCHUBBY &f&lDIAGNOSTICS'
+  status: '&7TPS: {tps_color}{tps} &8| &7Protection: {protection}'
+  counts: '&7Selected: &f{selected} &8| &7Force-loaded: &f{active} &8| &7Paused: &f{paused}'
+  no-chunks: '&8No loaded chunks are available for analysis.'
+  chunk: '&e- &f{chunk} &8- &7score: {grade} &f{score}'
+  protection-active: '&eactive'
+  protection-normal: '&aall tickets active'
+gui:
+  dashboard:
+    title: '&0Chubby Command Center'
+    header: '&8Chubby Command Center'
+    main-title: '&6Chubby Command Center'
+    current-enable: '&aEnable current chunk'
+    current-disable: '&cDisable current chunk'
+    manage: '&dManage current chunk'
+    visualizer: '&bChunk hologram'
+    chunks: '&eMy chunks'
+    groups: '&dChunk groups'
+    search: '&eSearch'
+    help: '&bHelp and commands'
+    map: '&cAdmin map'
+    diagnostics: '&cDiagnostics'
+    close: '&cClose'
+    protection-active: '&e* Protection active'
+    protection-normal: '&a* System optimal'
+    lore:
+      status: ['&8SYSTEM STATUS', '&7Owned: &f{owned}&7/&f{limit}', '&7Selected: &f{selected}', '&7TPS: {tps_color}{tps}', '{protection}']
+      current: ['&7{chunk}', '&eInstant force-load action.']
+      manage: ['&7Priority, group and detailed status.', '&eClick to open.']
+      visualizer: ['&7Displays the 16x16 border using', '&7premium particles.']
+      chunks: ['&7Browse, search and view details.', '&f{count} &7selected chunks.']
+      groups: ['&7Browse and manage groups.', '&f{count} &7groups.']
+      search: ['&7Filter by world or coordinates.', '&f/chubby search <text>']
+      help: ['&7Player and admin features.', '&eClick for chat help.']
+      map: ['&7Map of selected nearby chunks.']
+      diagnostics: ['&7TPS, tickets, paused and', '&7most demanding chunks.']
+      close: ['&8Close this menu.']
+  browser:
+    title: '&0Chubby - My chunks'
+    header: '&8My chunks &7{page}/{pages}'
+    previous: '&ePrevious page'
+    next: '&eNext page'

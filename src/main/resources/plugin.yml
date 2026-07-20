@@ -1,0 +1,20 @@
+name: Chubby
+version: 1.0.0
+main: hu.chubby.chunkloader.ChubbyPlugin
+api-version: '26.2'
+authors: [Chubby]
+commands:
+  chubby:
+permissions:
+  chubby.use:
+    default: true
+  chubby.menu:
+    default: true
+  chubby.manage:
+    default: true
+  chubby.visualize:
+    default: true
+  chubby.admin:
+    default: op
+  chubby.bypass.limit:
+    default: op

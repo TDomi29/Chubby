@@ -1,0 +1,72 @@
+lang-version: 2
+prefix: '&8[&6Chubby&8] '
+console:
+  warning: '&c[Chubby] Terhelesi figyelmeztetes: &f{chunk} &c(score: {score}, entity: {entities}, hopper: {hoppers})'
+messages:
+  no-permission: '&cNincs jogosultsagod ehhez.'
+  player-only: '&cEzt a parancsot csak jatekos hasznalhatja.'
+  chunk-enabled: '&aA chunk mostantol betoltve marad: &f{chunk}'
+  chunk-disabled: '&aA chunk betoltese leallitva: &f{chunk}'
+  limit-reached: '&cElerted a sajat chunk limitedet ({limit}).'
+  chunk-waiting: '&eA chunk mentve, de a terhelesvedelem miatt varakozik: &f{chunk}'
+  visualization: '&bA chunk-hologram {seconds} masodpercig lathato.'
+  config-reloaded: '&aChubby konfiguracio es nyelv ujratoltve.'
+  search-hint: '&eKereses: &f/cl search <vilag, X vagy Z> &7| torles: &f/cl search clear'
+help:
+  lines:
+    - '&8&m------------------------------------'
+    - '&6&lCHUBBY &f&lCHUNK LOADER &8- &7Sugo'
+    - '&e/chubby &8| &7Parancskozpont megnyitasa'
+    - '&e/chubby toggle &8| &7Aktualis chunk be-/kikapcsolasa'
+    - '&e/chubby show &8| &7Chunk-hologram megjelenitese'
+    - '&e/chubby search <szoveg> &8| &7Chunkok szurese'
+    - '&d&lCsoportok es prioritas'
+    - '&e/chubby link <nev> &8| &7Aktualis chunk csoporthoz kapcsolasa'
+    - '&e/chubby unlink &8| &7Levalasztas a csoportrol'
+    - '&e/chubby groups &8| &7Csoportmenu megnyitasa'
+    - '&e/chubby priority <low|normal|high> &8| &7Prioritas beallitasa'
+    - '&8&m------------------------------------'
+diagnostics:
+  line: '&8&m------------------------------------'
+  title: '&6&lCHUBBY &f&lDIAGNOSZTIKA'
+  status: '&7TPS: {tps_color}{tps} &8| &7Vedelem: {protection}'
+  counts: '&7Kijelolt: &f{selected} &8| &7Force-load: &f{active} &8| &7Szunetel: &f{paused}'
+  no-chunks: '&8Nincs jelenleg elemezheto betoltott chunk.'
+  chunk: '&e- &f{chunk} &8- &7score: {grade} &f{score}'
+  protection-active: '&eaktiv'
+  protection-normal: '&aminden ticket aktiv'
+gui:
+  dashboard:
+    title: '&0Chubby Parancskoezpont'
+    header: '&8Chubby Parancskoezpont'
+    main-title: '&6Chubby Parancskoezpont'
+    current-enable: '&aAktualis chunk kijelolese'
+    current-disable: '&cAktualis chunk kikapcsolasa'
+    manage: '&dAktualis chunk kezelese'
+    visualizer: '&bChunk-hologram'
+    chunks: '&eSajat chunkok'
+    groups: '&dChunk-csoportok'
+    search: '&eKereses'
+    help: '&bSugo es parancsok'
+    map: '&cAdmin terkep'
+    diagnostics: '&cDiagnosztika'
+    close: '&cBezaras'
+    protection-active: '&e* Terhelesvedelem aktiv'
+    protection-normal: '&a* Rendszer optimalis'
+    lore:
+      status: ['&8RENDSZERALLAPOT', '&7Sajat: &f{owned}&7/&f{limit}', '&7Kijelolt: &f{selected}', '&7TPS: {tps_color}{tps}', '{protection}']
+      current: ['&7{chunk}', '&eAzonnali force-load muvelet.']
+      manage: ['&7Prioritas, csoport es reszletes statusz.', '&eKattints a megnyitashoz.']
+      visualizer: ['&7A 16x16-os hatart premium', '&7reszecskekkel jeleniti meg.']
+      chunks: ['&7Bongeszes, kereses es reszletek.', '&f{count} &7kijelolt chunk.']
+      groups: ['&7Csoportok attekintese es kezelese.', '&f{count} &7csoport.']
+      search: ['&7Vilag vagy koordinata szerinti szures.', '&f/chubby search <szoveg>']
+      help: ['&7Jatekos- es adminfunkciok.', '&eKattints a chat-sugohoz.']
+      map: ['&7Kornyezo kijelolt chunkok terkepen.']
+      diagnostics: ['&7TPS, ticketek, szunetelo es', '&7legterheltebb chunkok.']
+      close: ['&8GUI bezarasa.']
+  browser:
+    title: '&0Chubby - Saját chunkok'
+    header: '&8Sajat chunkok &7{page}/{pages}'
+    previous: '&eElozo oldal'
+    next: '&eKovetkezo oldal'
