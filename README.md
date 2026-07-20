@@ -24,13 +24,6 @@ Chubby is a Paper plugin for selecting and force-loading Minecraft chunks throug
 3. Start the server once to create `plugins/Chubby/config.yml` and the language files.
 4. Review the configuration, then run `/chubby reload` after edits.
 
-To build from source:
-
-```powershell
-cd C:\Users\fules\Desktop\Chubby
-mvn clean package
-```
-
 ## Commands
 
 | Command | Description |
